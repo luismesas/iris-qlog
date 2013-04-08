@@ -9,7 +9,6 @@ HOW-TO USE
 * Import qlog.js into your iris project:
 
 * Config it:
-
 <pre><code>iris.qlog.config({
 	url : 'url_to_log',
 	clientId : 'your_app_client_id',
