@@ -4,7 +4,7 @@
 
 var qlog = {};
 
-var config = {
+var _config = {
 	url : 'http://qlog.io',
 	clientId : '1234567890ABCDEF',
 	secretKey : '1234567890ABCDEF1234567890ABCDEF'
