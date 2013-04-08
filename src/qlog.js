@@ -1,3 +1,7 @@
+/*! Iris-Qlog - v0.1 - 2013-04-08
+* https://github.com/luismesas/iris-qlog
+* Copyright (c) 2013 Iris-Qlog; Licensed New-BSD */
+
 var qlog = {};
 
 var config = {
