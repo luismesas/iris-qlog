@@ -10,11 +10,11 @@ var config = {
 	secretKey : '1234567890ABCDEF1234567890ABCDEF'
 };
 
-var qlog_url = '/app/' + config.clientId + '/log';
+var qlog_url = '/app/' + _config.clientId + '/log';
 
 function _ajax(p_method, p_path, p_params, f_success, f_error) {
 	return iris.ajax({
-		"url": config.url + p_path,
+		"url": _config.url + p_path,
 		"type": p_method,
 		"data": p_params,
 		"cache": false,
@@ -37,13 +37,18 @@ function _notify(message, tags, f_success, f_error){
 		msg : message,
 		tags : tags,
 		time : (new Date()).getTime(),
-		secretKey : config.secretKey
+		secretKey : _config.secretKey
 	};
 
 	return _ajax('PUT', qlog_url, params, f_success, f_error);
 }
-
 qlog.notify = _notify;
+
+qlog.config = function(config){
+	if(config.url !== undefined) _config.url = config.url;
+	if(config.clientId !== undefined) _config.clientId = config.clientId;
+	if(config.secretKey !== undefined) _config.secretKey = config.secretKey;
+};
 
 iris.qlog = qlog;
 iris.QLOG_ERROR = 'QLOG_ERROR';
