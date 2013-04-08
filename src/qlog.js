@@ -10,7 +10,7 @@ var _config = {
 	secretKey : '1234567890ABCDEF1234567890ABCDEF'
 };
 
-var qlog_url = '/app/' + _config.clientId + '/log';
+var qlog_url = '';
 
 function _ajax(p_method, p_path, p_params, f_success, f_error) {
 	return iris.ajax({
@@ -32,6 +32,11 @@ function _ajax(p_method, p_path, p_params, f_success, f_error) {
 	});
 }
 
+function resetUrl(){
+	qlog_url = '/app/' + _config.clientId + '/log';
+}
+resetUrl();
+
 function _notify(message, tags, f_success, f_error){
 	var params = {
 		msg : message,
@@ -48,6 +53,8 @@ qlog.config = function(config){
 	if(config.url !== undefined) _config.url = config.url;
 	if(config.clientId !== undefined) _config.clientId = config.clientId;
 	if(config.secretKey !== undefined) _config.secretKey = config.secretKey;
+
+	resetUrl();
 };
 
 iris.qlog = qlog;
