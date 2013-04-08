@@ -5,9 +5,9 @@
 var qlog = {};
 
 var _config = {
-	url : 'http://qlog.io',
-	clientId : '1234567890ABCDEF',
-	secretKey : '1234567890ABCDEF1234567890ABCDEF'
+	url : 'url_to_log',
+	clientId : 'your_app_client_id',
+	secretKey : 'your_app_secret_key'
 };
 
 var qlog_url = '';
@@ -35,9 +35,12 @@ function _ajax(p_method, p_path, p_params, f_success, f_error) {
 function resetUrl(){
 	qlog_url = '/app/' + _config.clientId + '/log';
 }
-resetUrl();
 
 function _notify(message, tags, f_success, f_error){
+	if(qlog_url === ''){
+		iris.log('*** QLOG NOT CONFIGURED ***');
+	}
+
 	var params = {
 		msg : message,
 		tags : tags,
